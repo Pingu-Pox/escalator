@@ -41,10 +41,10 @@ const invoke = async (interaction) => {
             .setFooter({
                 text: "This concern was submitted anonymously by a user in clan Ironguard.",
             });
-        //dmUser(interaction, embed, process.env.IRONGUARD_COMMERCIAL);
-        //dmUser(interaction, embed, process.env.IRONGUARD_LOGISTICAL);
-        //dmUser(interaction, embed, process.env.IRONGUARD_MARTIAL);
-        //dmUser(interaction, embed, process.env.MATRIARCH);
+        dmUser(interaction, embed, process.env.IRONGUARD_COMMERCIAL);
+        dmUser(interaction, embed, process.env.IRONGUARD_LOGISTICAL);
+        dmUser(interaction, embed, process.env.IRONGUARD_MARTIAL);
+        dmUser(interaction, embed, process.env.MATRIARCH);
     } else if (userRoles.has(process.env.RAMHEART)) {
         const embed = new EmbedBuilder()
             .setColor("Red")
@@ -60,10 +60,10 @@ const invoke = async (interaction) => {
             .setFooter({
                 text: "This concern was submitted anonymously by a user in clan Ramheart.",
             });
-        //dmUser(interaction, embed, process.env.RAMHEART_COMMERCIAL);
-        //dmUser(interaction, embed, process.env.RAMHEART_LOGISTICAL);
-        //dmUser(interaction, embed, process.env.RAMHEART_MARTIAL);
-        //dmUser(interaction, embed, process.env.MATRIARCH);
+        dmUser(interaction, embed, process.env.RAMHEART_COMMERCIAL);
+        dmUser(interaction, embed, process.env.RAMHEART_LOGISTICAL);
+        dmUser(interaction, embed, process.env.RAMHEART_MARTIAL);
+        dmUser(interaction, embed, process.env.MATRIARCH);
     } else if (userRoles.has(process.env.RUNEFORGE)) {
         const embed = new EmbedBuilder()
             .setColor("Red")
@@ -79,10 +79,10 @@ const invoke = async (interaction) => {
             .setFooter({
                 text: "This concern was submitted anonymously by a user in clan Runeforge.",
             });
-        //dmUser(interaction, embed, process.env.RUNEFORGE_COMMERCIAL);
+        dmUser(interaction, embed, process.env.RUNEFORGE_COMMERCIAL);
         dmUser(interaction, embed, process.env.RUNEFORGE_LOGISTICAL);
-        //dmUser(interaction, embed, process.env.RUNEFORGE_MARTIAL);
-        //dmUser(interaction, embed, process.env.MATRIARCH);
+        dmUser(interaction, embed, process.env.RUNEFORGE_MARTIAL);
+        dmUser(interaction, embed, process.env.MATRIARCH);
     } else {
         const embed = new EmbedBuilder()
             .setColor("Red")
@@ -96,9 +96,9 @@ const invoke = async (interaction) => {
             )
             .setTimestamp()
             .setFooter({
-                text: "This concern was submitted anonymously by a user in the Discord server.",
+                text: "This concern was submitted anonymously by a user not in a clan. This concern was sent only to you.",
             });
-        //dmUser(interaction, embed, process.env.MATRIARCH);
+        dmUser(interaction, embed, process.env.MATRIARCH);
     }
 
     interaction.reply({
