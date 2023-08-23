@@ -6,8 +6,8 @@ import {
 import {} from "dotenv/config";
 import fs from "fs";
 
-const NAME = "concern";
-const DESCRIPTION = "Submit a concern anonymously.";
+const NAME = "suggestion";
+const DESCRIPTION = "Submit a suggestion anonymously.";
 
 const create = () => {
     const command = new SlashCommandSubcommandBuilder()
@@ -15,8 +15,10 @@ const create = () => {
         .setDescription(DESCRIPTION)
         .addStringOption((option) =>
             option
-                .setName("concern")
-                .setDescription("The concern you'd like to report anonymously.")
+                .setName("suggestion")
+                .setDescription(
+                    "The suggestion you'd like to submit anonymously."
+                )
                 .setRequired(true)
         );
     return command.toJSON();
@@ -24,27 +26,26 @@ const create = () => {
 
 const invoke = async (interaction) => {
     const userRoles = interaction.member.roles.cache;
-
     if (userRoles.has(process.env.IRONGUARD)) {
         const embed = new EmbedBuilder()
-            .setColor("Red")
-            .setTitle("Concern")
+            .setColor("Green")
+            .setTitle("Suggestion")
             .setURL(
-                "https://docs.google.com/document/d/1CI2Rg3Tz0uzHHSt6Koe7o2_HS25D2BaYUmszU0GKpOY/edit"
+                "https://docs.google.com/document/d/1fQ70halefrTR-xBSJN00oLzuy2yo_PFRKVvuSw_AuaE/edit"
             )
-            .setDescription(interaction.options.getString("concern"))
+            .setDescription(interaction.options.getString("suggestion"))
             .setThumbnail(
                 "https://xn--dnhold-3ya.com/wp-content/uploads/2023/08/astrid-e1692766802329.png"
             )
             .setTimestamp()
             .setFooter({
-                text: "This concern was submitted anonymously by a user in clan Ironguard.",
+                text: "This suggestion was submitted anonymously by a user in clan Ironguard.",
             });
         dmUser(
             interaction,
             embed,
             process.env.IRONGUARD_COMMERCIAL,
-            "Ironguard Commcercial"
+            "Ironguard Commercial"
         );
         dmUser(
             interaction,
@@ -61,18 +62,18 @@ const invoke = async (interaction) => {
         dmUser(interaction, embed, process.env.MATRIARCH, "Matriarch");
     } else if (userRoles.has(process.env.RAMHEART)) {
         const embed = new EmbedBuilder()
-            .setColor("Red")
-            .setTitle("Concern")
+            .setColor("Green")
+            .setTitle("Suggestion")
             .setURL(
-                "https://docs.google.com/document/d/1CI2Rg3Tz0uzHHSt6Koe7o2_HS25D2BaYUmszU0GKpOY/edit"
+                "https://docs.google.com/document/d/1fQ70halefrTR-xBSJN00oLzuy2yo_PFRKVvuSw_AuaE/edit"
             )
-            .setDescription(interaction.options.getString("concern"))
+            .setDescription(interaction.options.getString("suggestion"))
             .setThumbnail(
                 "https://xn--dnhold-3ya.com/wp-content/uploads/2023/08/astrid-e1692766802329.png"
             )
             .setTimestamp()
             .setFooter({
-                text: "This concern was submitted anonymously by a user in clan Ramheart.",
+                text: "This suggestion was submitted anonymously by a user in clan Ramheart.",
             });
         dmUser(
             interaction,
@@ -95,18 +96,18 @@ const invoke = async (interaction) => {
         dmUser(interaction, embed, process.env.MATRIARCH, "Matriarch");
     } else if (userRoles.has(process.env.RUNEFORGE)) {
         const embed = new EmbedBuilder()
-            .setColor("Red")
-            .setTitle("Concern")
+            .setColor("Green")
+            .setTitle("Suggestion")
             .setURL(
-                "https://docs.google.com/document/d/1CI2Rg3Tz0uzHHSt6Koe7o2_HS25D2BaYUmszU0GKpOY/edit"
+                "https://docs.google.com/document/d/1fQ70halefrTR-xBSJN00oLzuy2yo_PFRKVvuSw_AuaE/edit"
             )
-            .setDescription(interaction.options.getString("concern"))
+            .setDescription(interaction.options.getString("suggestion"))
             .setThumbnail(
                 "https://xn--dnhold-3ya.com/wp-content/uploads/2023/08/astrid-e1692766802329.png"
             )
             .setTimestamp()
             .setFooter({
-                text: "This concern was submitted anonymously by a user in clan Runeforge.",
+                text: "This suggestion was submitted anonymously by a user in clan Runeforge.",
             });
         dmUser(
             interaction,
@@ -129,24 +130,24 @@ const invoke = async (interaction) => {
         dmUser(interaction, embed, process.env.MATRIARCH, "Matriarch");
     } else {
         const embed = new EmbedBuilder()
-            .setColor("Red")
-            .setTitle("Concern")
+            .setColor("Green")
+            .setTitle("Suggestion")
             .setURL(
-                "https://docs.google.com/document/d/1CI2Rg3Tz0uzHHSt6Koe7o2_HS25D2BaYUmszU0GKpOY/edit"
+                "https://docs.google.com/document/d/1fQ70halefrTR-xBSJN00oLzuy2yo_PFRKVvuSw_AuaE/edit"
             )
-            .setDescription(interaction.options.getString("concern"))
+            .setDescription(interaction.options.getString("suggestion"))
             .setThumbnail(
                 "https://xn--dnhold-3ya.com/wp-content/uploads/2023/08/astrid-e1692766802329.png"
             )
             .setTimestamp()
             .setFooter({
-                text: "This concern was submitted anonymously by a user not in a clan. This concern was sent only to you.",
+                text: "This suggestion was submitted anonymously by a user not in a clan. This suggestion was sent only to you.",
             });
         dmUser(interaction, embed, process.env.MATRIARCH, "Matriarch");
     }
 
     interaction.reply({
-        content: "Your concern has been submitted anonymously.",
+        content: "Your suggestion has been submitted anonymously.",
         ephemeral: true,
     });
 };

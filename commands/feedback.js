@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from "discord.js";
 import * as concern from "./concern.js";
+import * as suggestion from "./suggestion.js";
 
 const create = () => {
     const command = new SlashCommandBuilder()
@@ -17,6 +18,19 @@ const create = () => {
                         )
                         .setRequired(true)
                 )
+        )
+        .addSubcommand((subcommand) =>
+            subcommand
+                .setName(suggestion.NAME)
+                .setDescription(suggestion.DESCRIPTION)
+                .addStringOption((option) =>
+                    option
+                        .setName("suggestion")
+                        .setDescription(
+                            "The suggestion you'd like to submit anonymously."
+                        )
+                        .setRequired(true)
+                )
         );
 
     return command.toJSON();
@@ -27,6 +41,8 @@ const invoke = async (interaction) => {
 
     if (subcommand === "concern") {
         await concern.invoke(interaction);
+    } else if (subcommand === "suggestion") {
+        await suggestion.invoke(interaction);
     } else {
         interaction.reply({
             content: "Invalid subcommand: " + subCommand,
