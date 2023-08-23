@@ -25,32 +25,45 @@ const create = () => {
 const invoke = async (interaction) => {
     const userRoles = interaction.member.roles.cache;
     const concernString = interaction.options.getString("concern");
+
     if (userRoles.has(process.env.IRONGUARD)) {
+        dmUser(interaction, concernString, process.env.IRONGUARD_COMMERCIAL);
+        dmUser(interaction, concernString, process.env.IRONGUARD_LOGISTICAL);
+        dmUser(interaction, concernString, process.env.IRONGUARD_MARTIAL);
     } else if (userRoles.has(process.env.RAMHEART)) {
+        dmUser(interaction, concernString, process.env.RAMHEART_COMMERCIAL);
+        dmUser(interaction, concernString, process.env.RAMHEART_LOGISTICAL);
+        dmUser(interaction, concernString, process.env.RAMHEART_MARTIAL);
     } else if (userRoles.has(process.env.RUNEFORGE)) {
-        // get user object
-        const user = await interaction.guild.members
-            .fetch(process.env.RUNEFORGE_LOGISTICAL)
-            .catch(() => null);
-
-        if (!user) return interaction.reply("User not found :(");
-
-        await user.send(concernString).catch(() => {
-            interaction.reply(
-                user.displayName +
-                    " has DMs closed or has no mutual servers with the bot :("
-            );
-        });
+        dmUser(interaction, concernString, process.env.RUNEFORGE_COMMERCIAL);
+        dmUser(interaction, concernString, process.env.RUNEFORGE_LOGISTICAL);
+        dmUser(interaction, concernString, process.env.RUNEFORGE_MARTIAL);
     } else {
         // Do nothing
     }
 
     // Also report this to the matriarch
+    dmUser(interaction, concernString, process.env.MATRIARCH);
 
     interaction.reply({
         content: "Your concern has been submitted anonymously.",
         ephemeral: true,
     });
 };
+
+async function dmUser(interaction, message, userId) {
+    const user = await interaction.guild.members
+        .fetch(userId)
+        .catch(() => null);
+
+    if (!user) return interaction.reply("User not found :(");
+
+    await user.send(message).catch(() => {
+        interaction.reply(
+            user.displayName +
+                " has DMs closed or has no mutual servers with the bot :("
+        );
+    });
+}
 
 export { create, DESCRIPTION, invoke, NAME };
