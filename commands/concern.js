@@ -1,8 +1,4 @@
-import {
-    Client,
-    SlashCommandSubcommandBuilder,
-    EmbedBuilder,
-} from "discord.js";
+import { Client, SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import {} from "dotenv/config";
 import fs from "fs";
 
@@ -10,7 +6,7 @@ const NAME = "concern";
 const DESCRIPTION = "Submit a concern anonymously.";
 
 const create = () => {
-    const command = new SlashCommandSubcommandBuilder()
+    const command = new SlashCommandBuilder()
         .setName(NAME)
         .setDescription(DESCRIPTION)
         .addStringOption((option) =>
