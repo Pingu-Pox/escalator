@@ -157,7 +157,7 @@ async function dmUser(interaction, embed, userId, roleMsg) {
         console.log(roleMsg + " user wasn't found!");
     } else {
         console.log(
-            interaction.member.displayName +
+            user.displayName +
                 " has received suggestion:" +
                 interaction.options.getString("suggestion")
         );
@@ -167,6 +167,10 @@ async function dmUser(interaction, embed, userId, roleMsg) {
             })
             .catch(() => {
                 interaction.reply(
+                    user.displayName +
+                        " has DMs closed or has no mutual servers with the bot :("
+                );
+                console.log(
                     user.displayName +
                         " has DMs closed or has no mutual servers with the bot :("
                 );
