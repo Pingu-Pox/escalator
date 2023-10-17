@@ -156,6 +156,11 @@ async function dmUser(interaction, embed, userId, roleMsg) {
     if (!user) {
         console.log(roleMsg + " user wasn't found!");
     } else {
+        console.log(
+            interaction.member.displayName +
+                " has received suggestion:" +
+                interaction.options.getString("suggestion")
+        );
         await user
             .send({
                 embeds: [embed],
