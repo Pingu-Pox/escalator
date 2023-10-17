@@ -26,9 +26,9 @@ To use the bot, follow these steps:
 ```
 version: '3'
 services:
-  runescriber:
-    container_name: runescriber
-    image: pingupox/runescriber:latest
+  escalator:
+    container_name: escalator
+    image: pingupox/escalator:latest
     environment:
       # Optional guild ID for local command registration, typically only used for development
       - GUILD_ID=
