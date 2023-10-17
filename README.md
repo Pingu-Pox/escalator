@@ -32,6 +32,21 @@ services:
     environment:
       # Optional guild ID for local command registration, typically only used for development
       - GUILD_ID=
+      # All of the IDs for the roles
+      - IRONGUARD=
+      - RAMHEART=
+      - RUNEFORGE=
+      - MATRIARCH=
+      # All the IDs of the users
+      - IRONGUARD_COMMERCIAL=
+      - IRONGUARD_LOGISTICAL=
+      - IRONGUARD_MARTIAL=
+      - RAMHEART_COMMERCIAL=
+      - RAMHEART_LOGISTICAL=
+      - RAMHEART_MARTIAL=
+      - RUNEFORGE_COMMERCIAL=
+      - RUNEFORGE_LOGISTICAL=
+      - RUNEFORGE_MARTIAL=
       # Bot token, obtained from https://discord.com/developers when creating a bot user
       - TOKEN=
     restart: always
