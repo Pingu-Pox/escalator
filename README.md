@@ -32,12 +32,12 @@ services:
     environment:
       # Optional guild ID for local command registration, typically only used for development
       - GUILD_ID=
-	  # All of the IDs for the roles
+      # All of the IDs for the roles
       - IRONGUARD=
       - RAMHEART=
       - RUNEFORGE=
       - MATRIARCH=
-	  # All the IDs of the users
+      # All the IDs of the users
       - IRONGUARD_COMMERCIAL=
       - IRONGUARD_LOGISTICAL=
       - IRONGUARD_MARTIAL=
