@@ -1,6 +1,6 @@
-import {} from "dotenv/config";
 import fs from "fs";
 import { Client, GatewayIntentBits } from "discord.js";
+import {} from "dotenv/config";
 
 // Create a new Client with the Guilds intent
 const client = new Client({
@@ -33,5 +33,35 @@ for (let event of events) {
         });
 }
 
-// Login with the environment data
+const requiredVariables = [
+    "TOKEN",
+    "IRONGUARD",
+    "RAMHEART",
+    "RUNEFORGE",
+    "MATRIARCH",
+    "IRONGUARD_COMMERCIAL",
+    "IRONGUARD_LOGISTICAL",
+    "IRONGUARD_MARTIAL",
+    "RAMHEART_COMMERCIAL",
+    "RAMHEART_LOGISTICAL",
+    "RAMHEART_MARTIAL",
+    "RUNEFORGE_COMMERCIAL",
+    "RUNEFORGE_LOGISTICAL",
+    "RUNEFORGE_MARTIAL",
+];
+
+const missingVariables = requiredVariables.filter(
+    (variable) => !process.env[variable]
+);
+
+if (missingVariables.length > 0) {
+    console.error(
+        `Missing environment variables: ${missingVariables.join(", ")}`
+    );
+    process.exit(1);
+}
+
+console.log(
+    "All required environment variables are present. Starting the bot..."
+);
 client.login(process.env.TOKEN);
