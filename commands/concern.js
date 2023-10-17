@@ -169,6 +169,10 @@ async function dmUser(interaction, embed, userId, roleMsg) {
                     user.displayName +
                         " has DMs closed or has no mutual servers with the bot :("
                 );
+                console.log(
+                    user.displayName +
+                        " has DMs closed or has no mutual servers with the bot :("
+                );
             });
     }
 }
